@@ -11,6 +11,7 @@ import {DemoMaterialModule} from './app/material-module';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 import {StepperOptionalExample} from './app/stepper-optional-example';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Default MatFormField appearance to 'fill' as that is the new recommended approach and the
 // `legacy` and `standard` appearances are scheduled for deprecation in version 10.
@@ -24,6 +25,7 @@ import {StepperOptionalExample} from './app/stepper-optional-example';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    FlexLayoutModule
   ],
   entryComponents: [StepperOptionalExample],
   declarations: [StepperOptionalExample],

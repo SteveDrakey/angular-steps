@@ -1,5 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { Observable } from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+
+export interface Fruit {
+  name: string;
+}
+
 
 /**
  * @title Stepper with optional steps
@@ -9,24 +19,44 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   templateUrl: 'stepper-optional-example.html',
   styleUrls: ['stepper-optional-example.css']
 })
+
+
 export class StepperOptionalExample implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   isOptional = false;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  howMuch = [
+    'Single item',
+    'Single black bag',
+    'Car boot load or less',
+    'Significant / Multiple Loads',
+    'Small van load',
+    'Large van load'];
+
+  sliderValue: number;
+
+
+  constructor(private _formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['' ],
       lastCtrl: [''],
       houseNumberCtrl: [''],
-      postCodeCtrl: ['']
+      postCodeCtrl: [''],
+      tel: [''],
+      mobile: ['']
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ''
+      secondCtrl: '',
+      footPathCtrl: [''],
+      land: ''
     });
   }
+
+
 }
 
 
