@@ -173,7 +173,7 @@
 										<br>
 										<div>
 											<button mat-button matStepperPrevious>Back</button>
-											<button mat-button matStepperNext>Next</button>
+											<button mat-button matStepperNext>Submit</button>
 										</div>
 									</div>
 									<div fxFlex="50">
@@ -199,20 +199,19 @@
 				</mat-step>
 				<mat-step>
 					<ng-template matStepLabel>Done</ng-template>
-					<p>You are now done.</p>
+
 					<div>
-						
 						<mat-card>
 							<mat-card-title>
 								Done
 							</mat-card-title>
 							<mat-card-subtitle>
-								This will be submitted to CRM
+								Case created with ref' CRM-1212-DS223
 							</mat-card-subtitle>
 							<mat-card-content>
-								<pre>
-									{{firstFormGroup.value | json}}
-								</pre>
+								<!-- <pre>
+{{firstFormGroup.value | json}}
+								</pre> -->
 							</mat-card-content></mat-card>
 
 						<button mat-button matStepperPrevious>Back</button>

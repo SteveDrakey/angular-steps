@@ -3,9 +3,10 @@ import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocomplete } from '@angular/material/autocomplete';
-import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import {map, startWith, tap} from 'rxjs/operators';
 import { ImageUploaderOptions, FileQueueObject } from 'ngx-image-uploader-next';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface Fruit {
   name: string;
@@ -41,11 +42,7 @@ export class StepperOptionalExample implements OnInit {
   constructor(private _formBuilder: FormBuilder) {
   }
 
-  myControl = new FormControl();
-
   filteredOptions: Observable<string[]>;
-
-
 
   imageOptions: ImageUploaderOptions = {
     uploadUrl: 'https://fancy-image-uploader-demo.azurewebsites.net/api/demo/upload',
@@ -64,12 +61,6 @@ export class StepperOptionalExample implements OnInit {
   }
 
   ngOnInit() {
-
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
-
     this.firstFormGroup = this._formBuilder.group({
       firstName: ['' ],
       lastName: [''],
@@ -84,8 +75,15 @@ export class StepperOptionalExample implements OnInit {
       location: [''],
       evidence: [''],
       usefullInfo: [''],
-      tipstreet: ['']
+      tipstreet: [''],
+      obstructing: ['']
     });
+
+// @ts-ignore(2751)
+    this.filteredOptions = this.firstFormGroup.get('tipstreet').valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    ) ;
 
     this.secondFormGroup = this._formBuilder.group({
       firstName: ['' ],
