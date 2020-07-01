@@ -93,7 +93,7 @@
 							Please complete the fields below
 						</mat-card-subtitle>
 						<mat-card-content>
-							<form [formGroup]="firstFormGroup">
+							<form [formGroup]="secondFormGroup">
 
 								<div fxLayout="row" fxLayout.xs="column" fxLayoutGap.gt-md="16px"
 									fxLayoutAlign="stretch">
@@ -176,7 +176,11 @@
 											<button mat-button matStepperNext>Submit</button>
 										</div>
 									</div>
-									<div fxFlex="50">
+									<div *ngIf="secondFormGroup.value.land=='private'" fxFlex="70">
+										<h1>The council cannot collect from private land</h1>
+										<img src="http://www.pngmart.com/files/10/Stop-PNG-Transparent.png" />
+									</div>
+									<div *ngIf="secondFormGroup.value.land!='private'" fxFlex="50">
 										<mat-form-field>
 											<mat-label>Type of rubbish and other useful information</mat-label>
 											<textarea formControlName="usefullInfo" style="min-height: 8em;" matInput ></textarea>

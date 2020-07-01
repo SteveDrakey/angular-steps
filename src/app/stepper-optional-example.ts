@@ -79,13 +79,9 @@ export class StepperOptionalExample implements OnInit {
       obstructing: ['']
     });
 
-// @ts-ignore(2751)
-    this.filteredOptions = this.firstFormGroup.get('tipstreet').valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    ) ;
 
-    this.secondFormGroup = this._formBuilder.group({
+
+    this.secondFormGroup  = this._formBuilder.group({
       firstName: ['' ],
       lastName: [''],
       email: [''],
@@ -99,7 +95,15 @@ export class StepperOptionalExample implements OnInit {
       location: [''],
       evidence: [''],
       usefullInfo: [''],
+      tipstreet: [''],
+      obstructing: ['']
     });
+
+    // @ts-ignore(2751)
+    this.filteredOptions = this.secondFormGroup.get('tipstreet').valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    ) ;
 
   }
 
