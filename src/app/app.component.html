@@ -9,7 +9,9 @@
 			<h1>Street cleaning</h1>
 			<mat-horizontal-stepper linear #stepper>
 				<mat-step [stepControl]="firstFormGroup" [optional]='true'>
-					<ng-template fxHide fxShow.gt-sm matStepLabel>Contact Information</ng-template>
+					<ng-template fxHide fxShow.gt-md matStepLabel>
+						<div   fxShow.gt-md >Contact</div>
+					</ng-template>
 					<mat-card>
 						<mat-card-title>
 							Contact information
@@ -84,7 +86,11 @@
 				<!-- #docregion optional -->
 				<mat-step [stepControl]="secondFormGroup">
 					<!-- #enddocregion optional -->
-					<ng-template matStepLabel>Fly-tipping details</ng-template>
+					<!-- <ng-template matStepLabel>Fly-tipping details</ng-template> -->
+					<ng-template fxHide fxShow.gt-md matStepLabel>
+						<div   fxShow.gt-md >Details</div>
+					</ng-template>
+
 					<mat-card>
 						<mat-card-title>
 							Fly-tipping details
@@ -171,10 +177,6 @@
 
 
 										<br>
-										<div>
-											<button mat-button matStepperPrevious>Back</button>
-											<button mat-button matStepperNext>Submit</button>
-										</div>
 									</div>
 									<div *ngIf="secondFormGroup.value.land=='private'" fxFlex="70">
 										<h1>The council cannot collect from private land</h1>
@@ -199,6 +201,12 @@
 								</div>
 							</form>
 						</mat-card-content>
+						<mat-card-actions>
+						<div>
+							<button mat-button matStepperPrevious>Back</button>
+							<button mat-button matStepperNext>Submit</button>
+						</div>
+					</mat-card-actions>
 					</mat-card>
 				</mat-step>
 				<mat-step>
